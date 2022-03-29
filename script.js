@@ -11,20 +11,11 @@ const personalMovieDB = {
   privat: false,
 };
 
-let i = 0;
-while (i < numberOfFilms) {
+for (let i = 0; i < numberOfFilms; i++) {
   personalMovieDB.movies[
     prompt("One of the last movies I watched?", "").trim()
   ] = prompt("How much would you rate it?").trim();
-
-  i++;
 }
-
-// for (let i = 0; i < numberOfFilms; i++) {
-//   personalMovieDB.movies[
-//     prompt("One of the last movies I watched?", "").trim()
-//   ] = prompt("How much would you rate it?").trim();
-// }
 
 // for (let i = 0; i <= numberOfFilms; i++) {
 //     const film = prompt("One of the last movies I watched?", "").trim();
