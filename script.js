@@ -79,11 +79,12 @@ for (let i = 0; i < 2; i++) {
   if (
     film !== null &&
     ratingFilm !== null &&
-    film !== undefined &&
-    ratingFilm !== undefined &&
+    film !== "" &&
+    ratingFilm !== "" &&
     film.length <= 50
   ) {
     personalMovieDB.movies[film] = ratingFilm;
+    console.log("Entered data added");
   } else {
     console.log("Incorrect data entered");
     i--;
