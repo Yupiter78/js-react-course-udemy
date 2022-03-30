@@ -1,14 +1,18 @@
 "use strict";
 
 let numberOfFilms;
-while (!numberOfFilms) {
-  numberOfFilms = parseInt(
-    prompt("How many films have you already watched?", "")?.trim()
-  );
-  if (!numberOfFilms) {
-    alert("Required field");
+function start() {
+  while (!numberOfFilms) {
+    numberOfFilms = parseInt(
+      prompt("How many films have you already watched?", "")?.trim()
+    );
+    if (!numberOfFilms) {
+      alert("Required field");
+    }
   }
 }
+
+start();
 
 console.log("numberOfFilms:", numberOfFilms);
 console.log("typeof numberOfFilms:", typeof numberOfFilms);
@@ -72,34 +76,42 @@ if (personalMovieDB.count >= 0 && personalMovieDB.count < 10) {
   alert("An error has occurred");
 } */
 
-for (let i = 0; i < 2; i++) {
-  const film = prompt("One of the last movies I watched?", ""),
-    ratingFilm = prompt("How much would you rate it?");
+function rememberMyFilms() {
+  for (let i = 0; i < 2; i++) {
+    const film = prompt("One of the last movies I watched?", ""),
+      ratingFilm = prompt("How much would you rate it?");
 
-  if (
-    film !== null &&
-    ratingFilm !== null &&
-    film !== "" &&
-    ratingFilm !== "" &&
-    film.length <= 50
-  ) {
-    personalMovieDB.movies[film] = ratingFilm;
-    console.log("Entered data added");
-  } else {
-    console.log("Incorrect data entered");
-    i--;
+    if (
+      film !== null &&
+      ratingFilm !== null &&
+      film !== "" &&
+      ratingFilm !== "" &&
+      film.length <= 50
+    ) {
+      personalMovieDB.movies[film] = ratingFilm;
+      console.log("Entered data added");
+    } else {
+      console.log("Incorrect data entered");
+      i--;
+    }
   }
 }
 
-if (personalMovieDB.count >= 0 && personalMovieDB.count < 10) {
-  console.log("Few films watched");
-} else if (personalMovieDB.count >= 10 && personalMovieDB.count <= 30) {
-  console.log("You are classic spectator");
-} else if (personalMovieDB.count > 30) {
-  console.log("You are cinephile");
-} else {
-  console.log("An error has occurred");
+rememberMyFilms();
+
+function detectPersonalLevel() {
+  if (personalMovieDB.count >= 0 && personalMovieDB.count < 10) {
+    console.log("Few films watched");
+  } else if (personalMovieDB.count >= 10 && personalMovieDB.count <= 30) {
+    console.log("You are classic spectator");
+  } else if (personalMovieDB.count > 30) {
+    console.log("You are cinephile");
+  } else {
+    console.log("An error has occurred");
+  }
 }
+
+detectPersonalLevel();
 
 // const firstFilm = prompt("One of the last movies I watched?", "").trim();
 // const ratingFirstFilm = prompt("How much would you rate it?");
@@ -110,4 +122,20 @@ if (personalMovieDB.count >= 0 && personalMovieDB.count < 10) {
 // personalMovieDB["movies"][firstFilm] = ratingFirstFilm;
 // personalMovieDB.movies[secondFilm] = ratingSecondFilm;
 
-console.log("personalMovieDB:", personalMovieDB);
+function showMyDb(privat) {
+  if (!privat) {
+    console.log("personalMovieDB:", personalMovieDB);
+  }
+}
+
+showMyDb(personalMovieDB.privat);
+
+function writeYourGenres(genres = []) {
+  for (let i = 1; i <= 3; i++) {
+    genres.push(prompt(`Your favorite genre is numbered ${i}`));
+  }
+}
+
+writeYourGenres(personalMovieDB.genres);
+
+console.log("personalMovieDB_2:", personalMovieDB);
