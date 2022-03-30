@@ -130,9 +130,23 @@ function showMyDb(privat) {
 
 showMyDb(personalMovieDB.privat);
 
-function writeYourGenres(genres = []) {
+/* function writeYourGenres(genres = []) {
   for (let i = 1; i <= 3; i++) {
     genres.push(prompt(`Your favorite genre is numbered ${i}`));
+  }
+} */
+
+function writeYourGenres(genres = []) {
+  for (let i = 1; i <= 3; i++) {
+    let question;
+    while (!question) {
+      question = prompt(`Your favorite genre is numbered ${i}`, "");
+      if (question) {
+        genres.push(question);
+      } else {
+        alert("Required field");
+      }
+    }
   }
 }
 
